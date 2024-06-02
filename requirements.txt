@@ -58,7 +58,6 @@ pytest
 pytest-mock
 python-dateutil
 pytz
-pywin32
 PyYAML
 pyzmq
 requests
