@@ -12,9 +12,6 @@ on:
   merge_group:
     branches: [ "main", "stable" ]
 
-permissions:
-  contents: read
-
 jobs:
   build:
 
