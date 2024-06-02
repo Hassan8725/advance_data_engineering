@@ -27,8 +27,6 @@ jobs:
       run: |
         pip install -r requirements.txt
     - name: Make script executable
-      run: |
-        chmod +x ./project/tests.sh
+      run: chmod +x ./project/tests.sh
     - name: Test with test-files
-      run: |
-        ./project/tests.sh
+      run: ./project/tests.sh
