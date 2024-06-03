@@ -34,7 +34,7 @@ pipeline GoodsTransportedByTrainPipeline {
         ->GoodsTransportedByTrainLoader;
 
     block GoodsTransportedByTrainExtractor oftype HttpExtractor{
-        url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
+            url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
     }
 
     block GoodsTransportedByTrainTextFileInterpreter oftype TextFileInterpreter { encoding: "latin2";}
@@ -83,8 +83,6 @@ pipeline GoodsTransportedByTrainPipeline {
     constraint goodsidregex oftype RegexConstraint {
 
         regex: /^NST7-[A-Z0-9]{3}$/;
-
-
     }
 
     valuetype goodsid oftype text {
@@ -93,27 +91,16 @@ pipeline GoodsTransportedByTrainPipeline {
         ];
     }
 
-    constraint yearregex oftype RegexConstraint {
-        regex: /^\d{4}$/;
-    }
-
-    valuetype year oftype text {
-        constraints: [
-            yearregex,
-        ];
-    }
-
-
     block GoodsTransportedByTrainTableInterpreter oftype TableInterpreter {
         header: false;
         columns: [
-            "year" oftype year,
+            "year" oftype text,
             "month" oftype germanmonth,
             "goods_id" oftype goodsid,
             "goods_name" oftype text,
             "goods_source" oftype text,
-            "abroad" oftype integer,
-            "total" oftype integer
+            "abroad" oftype positiveint,
+            "total" oftype positiveint
         ];
     }
 
