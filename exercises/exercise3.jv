@@ -1,0 +1,115 @@
+//  Exercise 3:
+//  Build an automated data pipeline for the following source:
+//      https://mobilithek.info/offers/-94981960701408443
+//      direct link to CSV: https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv
+//  Goal:
+//      Remove metadata rows (initial description and headers [data starts in row 9], copyright notice in the footer)
+//      Ensure German umlauts are saved correctly
+//      Select only a subset of columns
+//          Data about time and transported goods: Column A-E
+//          Data about quantity: Column AT-AU
+//      Add header names for the first columns A-E
+//          New names: 'year', 'month', 'goods_id', 'goods_name', 'goods_source'
+//      Rename headers for the quantity columns AT-AU
+//          New names: 'abroad', 'total'
+//      Choose suitable value types for all columns
+//          Numeric values must be positive integers
+//          'month' must be a German month, capitalized
+//          'goods_id' must start with NST7-, followed by three numbers or capital letters
+//      Drop rows with missing or invalid values
+//      Assign fitting built-in SQLite types (e.g., BIGINT, TEXT or FLOAT) to all columns
+//      Write data into a SQLite database called “goodsTransportedByTrain.sqlite”, in the table “goods”
+//  Use Jayvee version 0.4.0
+//  Submit as  /exercises/exercise3.jv
+
+
+pipeline GoodsTransportedByTrainPipeline {
+
+    GoodsTransportedByTrainExtractor
+        ->GoodsTransportedByTrainTextFileInterpreter
+        ->GoodsTransportedByTrainCSVInterpreter
+        ->GoodsTransportedByTrainDataSelector
+        ->GoodsTransportedByTrainColDeleter
+        ->GoodsTransportedByTrainTableInterpreter
+        ->GoodsTransportedByTrainLoader;
+
+    block GoodsTransportedByTrainExtractor oftype HttpExtractor{
+            url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
+    }
+
+    block GoodsTransportedByTrainTextFileInterpreter oftype TextFileInterpreter { encoding: "latin2";}
+
+    block GoodsTransportedByTrainCSVInterpreter oftype CSVInterpreter {
+        delimiter: ';';
+    }
+
+
+    block GoodsTransportedByTrainDataSelector  oftype CellRangeSelector {
+    select: (range A9:AU41336);
+    }
+
+    block GoodsTransportedByTrainColDeleter oftype ColumnDeleter {
+        delete: [column F, column G, column H, column I, column J, column K, column L, 
+        column M, column N, column O, column P, column Q, column R, column S, column T, 
+        column U, column V, column W, column X, column Y, column Z, column AA, column AB, 
+        column AC, column AD, column AE, column AF, column AG, column AH, column AI, column AJ, 
+        column AK, column AL, column AM, column AN, column AO, column AP, column AQ, column AR, 
+        column AS];
+    }
+
+    constraint positiveintregex oftype RegexConstraint {
+
+        regex: /^[1-9]\d*$/;
+    }
+
+    valuetype positiveint oftype text {
+        constraints: [
+            positiveintregex,
+        ];
+    }
+
+    constraint germanmonthregex oftype RegexConstraint {
+
+        regex: /^(Januar|Februar|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)$/;
+
+    }
+
+    valuetype germanmonth oftype text {
+        constraints: [
+            germanmonthregex,
+        ];
+    }
+
+    constraint goodsidregex oftype RegexConstraint {
+
+        regex: /^NST7-[A-Z0-9]{3}$/;
+
+
+    }
+
+    valuetype goodsid oftype text {
+        constraints: [
+            goodsidregex,
+        ];
+    }
+
+
+    block GoodsTransportedByTrainTableInterpreter oftype TableInterpreter {
+        header: false;
+        columns: [
+            "year" oftype text,
+            "month" oftype germanmonth,
+            "goods_id" oftype goodsid,
+            "goods_name" oftype text,
+            "goods_source" oftype text,
+            "abroad" oftype positiveint,
+            "total" oftype positiveint
+        ];
+    }
+
+    block GoodsTransportedByTrainLoader oftype SQLiteLoader {
+        table: 'goods';
+        file: './goodsTransportedByTrain.sqlite';
+    }
+
+}
