@@ -34,7 +34,7 @@ pipeline GoodsTransportedByTrainPipeline {
         ->GoodsTransportedByTrainLoader;
 
     block GoodsTransportedByTrainExtractor oftype HttpExtractor{
-            url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
+        url: "https://www-genesis.destatis.de/genesis/downloads/00/tables/46131-0014_00.csv";
     }
 
     block GoodsTransportedByTrainTextFileInterpreter oftype TextFileInterpreter { encoding: "latin2";}
@@ -97,7 +97,7 @@ pipeline GoodsTransportedByTrainPipeline {
     block GoodsTransportedByTrainTableInterpreter oftype TableInterpreter {
         header: false;
         columns: [
-            "year" oftype text,
+            "year" oftype integer,
             "month" oftype germanmonth,
             "goods_id" oftype goodsid,
             "goods_name" oftype text,
