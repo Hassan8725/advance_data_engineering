@@ -57,14 +57,14 @@ pipeline GoodsTransportedByTrainPipeline {
         column AS];
     }
 
-    constraint positiveintregex oftype RegexConstraint {
-
-        regex: /^[1-9]\d*$/;
+    constraint positiveintconstraint oftype RangeConstraint {
+        lowerBound: 0;
+        lowerBoundInclusive: false;
     }
 
-    valuetype positiveint oftype text {
+    valuetype positiveint oftype integer {
         constraints: [
-            positiveintregex,
+            positiveintconstraint,
         ];
     }
 
@@ -91,21 +91,10 @@ pipeline GoodsTransportedByTrainPipeline {
         ];
     }
 
-
-    constraint yearregex oftype RegexConstraint {
-        regex: /^\d{4}$/;
-    }
-
-    valuetype yeartype oftype integer {
-        constraints: [
-            yearregex,
-        ];
-    }
-
     block GoodsTransportedByTrainTableInterpreter oftype TableInterpreter {
         header: false;
         columns: [
-            "year" oftype yeartype,
+            "year" oftype positiveint,
             "month" oftype germanmonth,
             "goods_id" oftype goodsid,
             "goods_name" oftype text,
