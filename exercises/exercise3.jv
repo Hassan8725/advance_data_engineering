@@ -93,17 +93,27 @@ pipeline GoodsTransportedByTrainPipeline {
         ];
     }
 
+    constraint yearregex oftype RegexConstraint {
+        regex: /^\d{4}$/;
+    }
+
+    valuetype year oftype text {
+        constraints: [
+            yearregex,
+        ];
+    }
+
 
     block GoodsTransportedByTrainTableInterpreter oftype TableInterpreter {
         header: false;
         columns: [
-            "year" oftype integer,
+            "year" oftype year,
             "month" oftype germanmonth,
             "goods_id" oftype goodsid,
             "goods_name" oftype text,
             "goods_source" oftype text,
-            "abroad" oftype positiveint,
-            "total" oftype positiveint
+            "abroad" oftype integer,
+            "total" oftype integer
         ];
     }
 
