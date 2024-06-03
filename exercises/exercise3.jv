@@ -62,7 +62,7 @@ pipeline GoodsTransportedByTrainPipeline {
         regex: /^[1-9]\d*$/;
     }
 
-    valuetype positiveint oftype decimal {
+    valuetype positiveint oftype text {
         constraints: [
             positiveintregex,
         ];
@@ -96,7 +96,7 @@ pipeline GoodsTransportedByTrainPipeline {
         regex: /^\d{4}$/;
     }
 
-    valuetype yeartype oftype text {
+    valuetype yeartype oftype integer {
         constraints: [
             yearregex,
         ];
