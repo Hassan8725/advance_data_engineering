@@ -110,8 +110,8 @@ pipeline GoodsTransportedByTrainPipeline {
             "goods_id" oftype goodsid,
             "goods_name" oftype text,
             "goods_source" oftype text,
-            "abroad" oftype integer,
-            "total" oftype integer
+            "abroad" oftype positiveint,
+            "total" oftype positiveint
         ];
     }
 
