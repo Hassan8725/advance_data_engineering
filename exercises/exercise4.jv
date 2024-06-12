@@ -35,8 +35,6 @@ pipeline PhoneBatteryTempPipeline
         ->PhoneBatteryTempDataPicker
         ->PhoneBatteryTempTextInterpreter
         ->PhoneBatteryTempCSVInterpreter
-        ->PhoneBatteryTempRenameTemperature
-        ->PhoneBatteryTempRenameBatterietemperatur
         ->PhoneBatteryTempColDataSelector
         ->PhoneBatteryTempColDeleter
         ->PhoneBatteryTempTableDataInterpreter
@@ -49,17 +47,7 @@ pipeline PhoneBatteryTempPipeline
     block PhoneBatteryTempZipInterpreter oftype ArchiveInterpreter { archiveType: "zip";}
     block PhoneBatteryTempDataPicker oftype FilePicker { path: "/data.csv";}
     block PhoneBatteryTempTextInterpreter oftype TextFileInterpreter {}
-    block PhoneBatteryTempCSVInterpreter oftype CSVInterpreter {delimiter: ";"; }
-
-    block PhoneBatteryTempRenameTemperature oftype CellWriter {
-        at: cell E1;
-        write: ["temperature"]; 
-    }
-
-    block PhoneBatteryTempRenameBatterietemperatur oftype CellWriter {
-        at: cell J1;
-        write: ["battery_temperature"]; 
-    }  
+    block PhoneBatteryTempCSVInterpreter oftype CSVInterpreter {delimiter: ";"; } 
 
     block PhoneBatteryTempColDeleter oftype ColumnDeleter { 
         delete: [column F, column G, column H, column I]; 
