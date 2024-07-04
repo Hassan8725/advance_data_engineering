@@ -92,7 +92,7 @@ The content of this project is licensed under the Creative Commons Attribution 4
 [cc-by-image]: https://licensebuttons.net/l/by/4.0/88x31.png
 [cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
-For further information and detailed data source licenses, visit [IMF Climate Data](https://climatedata.imf.org/).
+Data licence is from IMF and it is open source data. For further information and detailed data source licenses, visit [IMF Climate Data](https://climatedata.imf.org/).
 
 ## Getting Started
 
