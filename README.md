@@ -1,7 +1,6 @@
-# Interlinked Dynamics: Exploring the Correlations between Surface Temperature, Atmospheric CO2, Sea Level Rise, and Land Cover Changes
-
 <div align="center">
-  <img src="project\final_report_latex\pictures\temp_world.png" width="1000" height="250" alt="Project Logo">
+  <h1>Interlinked Dynamics: Exploring the Correlations between Surface Temperature, Atmospheric CO2, Sea Level Rise, and Land Cover Changes</h1>
+  <img src="project/final_report_latex/pictures/co2_github.jpg" width="1000" height="250" alt="Project Logo">
 </div>
 
 <div align="center">
