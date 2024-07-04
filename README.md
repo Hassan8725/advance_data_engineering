@@ -13,7 +13,7 @@
 
 [![Exercise Feedback](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/exercise-feedback.yml/badge.svg)](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/exercise-feedback.yml)
 ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex1) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex2) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex3) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex4) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex5)
-
+</div>
 
 ## Project Overview
 This project investigates the interrelations between climate change variables: surface temperature, atmospheric CO2 concentrations, sea level rise, and land cover changes. The main objectives are:
