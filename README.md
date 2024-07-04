@@ -14,6 +14,19 @@
 ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex1) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex2) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex3) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex4) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex5)
 </div>
 
+# Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Data Sources](#data-sources)
+3. [Data Pipeline](#data-pipeline)
+4. [Analysis Summary](#analysis-summary)
+5. [Conclusion](#conclusion)
+6. [Repository Structure](#repository-structure)
+7. [License](#license)
+8. [Getting Started](#getting-started)
+9. [Version Control Steps](#version-control-steps)
+
+
 ## Project Overview
 This project investigates the interrelationships between climate change variables: surface temperature, atmospheric CO2 concentrations, sea level rise, and land cover changes.
 
