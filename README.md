@@ -9,6 +9,7 @@
 [![Jayvee](https://img.shields.io/badge/jayvee-0.4.0-blue.svg)](https://pypi.org/project/jayvee/0.4.0/)
 [![Continuous Integration Pipeline](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/project_test.yml/badge.svg)](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/project_test.yml)
 [![pre-commit](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/pre-commit.yaml)
+[![CC BY 4.0][cc-by-shield]][cc-by]
 
 [![Exercise Feedback](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/exercise-feedback.yml/badge.svg)](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/exercise-feedback.yml)
 ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex1) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex2) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex3) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex4) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex5)
@@ -82,6 +83,10 @@ The study highlights the impact of atmospheric CO2 on sea level rise and the com
 ## License
 
 The content of this project is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. For more information, visit [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/).
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
+[cc-by-image]: https://licensebuttons.net/l/by/4.0/88x31.png
+[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
 
 For further information and detailed data source licenses, visit [IMF Climate Data](https://climatedata.imf.org/).
 
