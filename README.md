@@ -15,9 +15,12 @@
 </div>
 
 ## Project Overview
-This project investigates the interrelations between climate change variables: surface temperature, atmospheric CO2 concentrations, sea level rise, and land cover changes. The main objectives are:
-1. How do changes in atmospheric CO2 concentrations correlate with changes in Sea Level Rise over time?
-2. Is there a correlation between rising mean surface temperatures and Land Cover Changes?
+This project investigates the interrelationships between climate change variables: surface temperature, atmospheric CO2 concentrations, sea level rise, and land cover changes.
+
+The main objectives are:
+1. How do changes in atmospheric CO2 concentrations correlate with changes in sea level rise over time?
+
+2. Is there a correlation between rising mean surface temperatures and land cover changes?
 
 ## Data Sources
 The project utilizes the following datasets:
