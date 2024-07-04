@@ -47,10 +47,10 @@ pipeline PhoneBatteryTempPipeline
     block PhoneBatteryTempZipInterpreter oftype ArchiveInterpreter { archiveType: "zip";}
     block PhoneBatteryTempDataPicker oftype FilePicker { path: "/data.csv";}
     block PhoneBatteryTempTextInterpreter oftype TextFileInterpreter {}
-    block PhoneBatteryTempCSVInterpreter oftype CSVInterpreter {delimiter: ";"; } 
+    block PhoneBatteryTempCSVInterpreter oftype CSVInterpreter {delimiter: ";"; }
 
-    block PhoneBatteryTempColDeleter oftype ColumnDeleter { 
-        delete: [column F, column G, column H, column I]; 
+    block PhoneBatteryTempColDeleter oftype ColumnDeleter {
+        delete: [column F, column G, column H, column I];
     }
 
     block PhoneBatteryTempColDataSelector oftype CellRangeSelector {
@@ -64,7 +64,7 @@ pipeline PhoneBatteryTempPipeline
 
     valuetype Valididtype oftype integer {
         constraints: [ Valididconstraint ];
-    } 
+    }
 
     block PhoneBatteryTempTableDataInterpreter oftype TableInterpreter {
         header: false;
@@ -73,13 +73,13 @@ pipeline PhoneBatteryTempPipeline
             "temperature" oftype decimal, "battery_temperature" oftype decimal
         ];
     }
-    
+
     transform CelsiusToFahrenheit {
         from tempCelsius oftype decimal;
         to tempFahrenheit oftype decimal;
         tempFahrenheit: (tempCelsius * 9/5) + 32;
    }
-   
+
     block PhoneBatteryTempTransformerA oftype TableTransformer {
         inputColumns: ['temperature'];
         outputColumn: 'temperature';
@@ -91,10 +91,10 @@ pipeline PhoneBatteryTempPipeline
         use: CelsiusToFahrenheit;
    }
 
-    block PhoneBatteryTempLoader oftype SQLiteLoader 
-    { 
-        table: "temperatures"; 
-        file: "./temperatures.sqlite"; 
+    block PhoneBatteryTempLoader oftype SQLiteLoader
+    {
+        table: "temperatures";
+        file: "./temperatures.sqlite";
     }
 
 

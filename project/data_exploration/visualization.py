@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import geopandas as gpd
 
+
 def plot_average_value_map(
     merged: gpd.GeoDataFrame, label_and_unit: str, column: str = "Average_Value"
 ) -> None:
@@ -36,7 +37,7 @@ def plot_average_value_map(
 
 
 def plot_column_over_time(
-    df: pd.DataFrame, date_col: str, value_col: str, label: str, frequency: str = 'M'
+    df: pd.DataFrame, date_col: str, value_col: str, label: str, frequency: str = "M"
 ) -> None:
     """
     Plot the specified column aggregated by the specified frequency.
@@ -50,7 +51,8 @@ def plot_column_over_time(
     :param label: str
         The label for the data to be used in the plot title and ylabel.
     :param frequency: str, optional
-        The frequency for resampling the data (e.g., 'M' for monthly, 'Y' for yearly). Defaults to 'M'.
+        The frequency for resampling the data (e.g., 'M' for monthly, 'Y' for yearly).
+            Defaults to 'M'.
     """
 
     df_copy = df.copy()
@@ -60,7 +62,7 @@ def plot_column_over_time(
     df_copy.set_index(date_col, inplace=True)
 
     resampled_data = df_copy[value_col].resample(frequency).mean()
-    
+
     plt.figure(figsize=(10, 6))
     resampled_data.plot()
     plt.title(f"{label} Over Time")
@@ -68,7 +70,6 @@ def plot_column_over_time(
     plt.ylabel(f"Average {label}")
     plt.grid(True)
     plt.show()
-
 
 
 def plot_average_change(avg_change: pd.Series, label: str) -> None:

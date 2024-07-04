@@ -20,7 +20,7 @@
 \maketitle
 
 \section{Introduction}
-Climate change is a critical issue which has to be assessed in different contexts of the environment. 
+Climate change is a critical issue which has to be assessed in different contexts of the environment.
 This report investigates two main questions:
 \begin{itemize}
     \item How do changes in atmospheric \(\text{CO}_2\) concentrations correlate with changes in sea level rise over time?
@@ -33,13 +33,13 @@ Knowledge of climate change implications on the social sphere is imperative towa
 \begin{itemize}
 
 \item \textbf{Dataset 1: Annual Surface Temperature Change}
-    
-This data source provides the mean surface temperature change for the period 1961–2021 for each country. It uses temperatures from 1951 and 1980 as a baseline. \cite{dataset1} 
-    
+
+This data source provides the mean surface temperature change for the period 1961–2021 for each country. It uses temperatures from 1951 and 1980 as a baseline. \cite{dataset1}
+
 \item \textbf{Dataset 2: World Monthly Atmospheric \(\text{CO}_2\) Concentrations}
 
 In this data source, world-wide average concentrations of \(\text{CO}_2\) are present, which have been observed on a monthly basis since 1958. \cite{dataset2}
-    
+
 \item \textbf{Dataset 3: Change in Mean Sea Levels}
 
 The indicator provided in this data source is global sea level rise for different seas and oceans, observed monthly since 1993. \cite{dataset3}
@@ -53,7 +53,7 @@ This data source looks at the changes in land cover over time from 1992 to 2020 
 \subsection{Data Structure and Quality}
 \begin{itemize}
     \item \textbf{Annual Surface Temperature Change} The data is structured in a time series for each country in a horizontal manner. Temperature change is in degree-Celsius units. The main columns to use are country, iso3 (i.e., country code mapping required for generating maps), and indicator values for all the years. At most, 8\% of the data in one of the years is unobserved, which is fine as that can be imputed with zeros.
-    
+
     \item \textbf{World Monthly Atmospheric \(\text{CO}_2\) Concentrations} This indicator of \(\text{CO}_2\) concentration is structured in a global time series with a monthly frequency. The main columns are date and value. The indicator value is expressed in parts per million (ppm). Nulls are 0\% in this dataset.
 
     \item \textbf{Change in Mean Sea Levels} In this dataset main columns are measure, date and value in millimeters. It is again a time series observed with a monthly frequency but it is categorized into major seas and oceans in measure column. There are 0\% nulls in this dataset.
@@ -75,11 +75,11 @@ First \texttt{extract\_csv} from extractor module is used to extract the data so
     \centering
     \begin{tikzpicture}[node distance=1.5cm and 1.5cm, auto]
         % Styles
-        \tikzstyle{smallblock} = [rectangle, draw, fill=blue!10, 
+        \tikzstyle{smallblock} = [rectangle, draw, fill=blue!10,
             text width=4em, text centered, rounded corners, minimum height=5em]
-        \tikzstyle{block} = [rectangle, draw, fill=blue!40, 
+        \tikzstyle{block} = [rectangle, draw, fill=blue!40,
             text width=4em, text centered, rounded corners, minimum height=5em]
-        \tikzstyle{largeblock} = [rectangle, draw, fill=blue!40, 
+        \tikzstyle{largeblock} = [rectangle, draw, fill=blue!40,
             text width=6em, text centered, rounded corners, minimum height=5em]
         \tikzstyle{line} = [draw, -latex', shorten >=0pt, shorten <=0pt]
 
@@ -102,7 +102,7 @@ First \texttt{extract\_csv} from extractor module is used to extract the data so
 
 
 \subsection{Output of Data Pipeline}
-Output datasets of the pipeline for all data sources are stored in sqlite database as tables as it was faster and easier to handle as a collective database, The pipeline is coded in a way that data quality dimensions were of the upmost priority and that the output datasets of the pipeline 
+Output datasets of the pipeline for all data sources are stored in sqlite database as tables as it was faster and easier to handle as a collective database, The pipeline is coded in a way that data quality dimensions were of the upmost priority and that the output datasets of the pipeline
 \begin{itemize}
     \item reflect the real word and are correct indicators
     \item contain all necessary information which is required to answer selected questions
@@ -124,7 +124,7 @@ Data pipeline was used to import and perform all the data engineering task befor
     \label{fig:temp_change}
 \end{figure}
 
-By looking at the fluctuations of the sea level over the years in figure \ref{fig:sea_levels}, as it clearly indicates the trend of a rise in the average sea levels from the year 1993 to the year 2021. The trend demonstrates that the impact of both thermal expansion and melting of ice caps is causing sea levels to rise all over the globe. The latter underlines the continual growth of this phenomenon, thus stressing the consequences on the coastal zones of international scale. 
+By looking at the fluctuations of the sea level over the years in figure \ref{fig:sea_levels}, as it clearly indicates the trend of a rise in the average sea levels from the year 1993 to the year 2021. The trend demonstrates that the impact of both thermal expansion and melting of ice caps is causing sea levels to rise all over the globe. The latter underlines the continual growth of this phenomenon, thus stressing the consequences on the coastal zones of international scale.
 
 \begin{figure}[h]
     \centering
@@ -133,7 +133,7 @@ By looking at the fluctuations of the sea level over the years in figure \ref{fi
     \label{fig:sea_levels}
 \end{figure}
 
-The shifts in the general sea level annually across different sea regions are presented in the bar graph in figure \ref{fig:sea_levels2}. The Baltic Sea has the highest average rise, while the South China and North Pacific seas occupy the second and third places, respectively. Such differences demonstrate the variations of the sea level rise effect where the aspects including ocean currents, melting land ice and climate within the region define the effects on the sea level. 
+The shifts in the general sea level annually across different sea regions are presented in the bar graph in figure \ref{fig:sea_levels2}. The Baltic Sea has the highest average rise, while the South China and North Pacific seas occupy the second and third places, respectively. Such differences demonstrate the variations of the sea level rise effect where the aspects including ocean currents, melting land ice and climate within the region define the effects on the sea level.
 
 \begin{figure}[ht!]
     \centering
@@ -155,7 +155,7 @@ In figure \ref{fig:co2_conc}, the monthly average concentration of the atmospher
 
 \subsection{Answer: 1}
 
-Regarding the first question. Strong positive correlation is found between atmospheric \(\text{CO}_2\) levels and sea level. Going by what has been experienced, \(\text{CO}_2\) levels have continued to rise and so has the sea level. This result is due to the greenhouse effect because higher level of \(\text{CO}_2\) increases the heat trapped, thereby the sea expands thermally and glaciers in addition to ice caps melt. The scatter plot in Figure \ref{fig:co2_vs_sea_level} illustrates the correlation between atmospheric \(\text{CO}_2\) concentration and sea level rise. 
+Regarding the first question. Strong positive correlation is found between atmospheric \(\text{CO}_2\) levels and sea level. Going by what has been experienced, \(\text{CO}_2\) levels have continued to rise and so has the sea level. This result is due to the greenhouse effect because higher level of \(\text{CO}_2\) increases the heat trapped, thereby the sea expands thermally and glaciers in addition to ice caps melt. The scatter plot in Figure \ref{fig:co2_vs_sea_level} illustrates the correlation between atmospheric \(\text{CO}_2\) concentration and sea level rise.
 
 \begin{figure}[ht!]
     \centering

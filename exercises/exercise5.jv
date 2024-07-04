@@ -28,7 +28,7 @@ pipeline TransportAgencyPipeline {
         ->TransportAgencyCSVInterpreter
         ->TransportAgencyTableInterpreter
         ->TransportAgencyLoader;
-    
+
     block TransportAgencyExtractor oftype HttpExtractor {
         url: 'https://gtfs.rhoenenergie-bus.de/GTFS.zip';
     }
@@ -37,15 +37,15 @@ pipeline TransportAgencyPipeline {
         archiveType: 'zip';
     }
 
-    block TransportAgencyFilePicker oftype FilePicker { 
+    block TransportAgencyFilePicker oftype FilePicker {
         path: '/stops.txt';
     }
 
     block TransportAgencyTextInterpreter oftype TextFileInterpreter {}
-    
+
     block TransportAgencyCSVInterpreter oftype CSVInterpreter {
         enclosing: '"';
-    }    
+    }
 
     constraint validzoneconstraint on integer:
         value == 1645;
