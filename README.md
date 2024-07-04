@@ -51,6 +51,10 @@ The data pipeline consists of three main modules:
 
 The ETL process ensures data quality, consistency, and appropriate format alignment with research questions.
 
+<div align="center">
+  <img src="project/final_report_latex/pictures/etl.png" width="1000" height="150" alt="ETL_Pipeline">
+</div>
+
 ## Analysis Summary
 - **Correlation between Atmospheric CO2 and Sea Level Rise**: A strong positive correlation was found, suggesting that higher CO2 levels contribute to sea level rise through thermal expansion and melting ice caps.
 - **Correlation between Surface Temperature and Land Cover Changes**: No significant correlation was observed, indicating other factors might influence land cover changes.
