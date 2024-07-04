@@ -2,67 +2,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import geopandas as gpd
 
-
-def plot_overall_average_temperature_change(df: pd.DataFrame) -> None:
-    """
-    Plot the overall average temperature change over the years.
-
-    :param df: pd.DataFrame
-        DataFrame containing the annual surface temperature change data.
-    """
-    year_columns = df.columns[2:]
-    avg_temp_change = df[year_columns].mean()
-
-    plt.figure(figsize=(10, 6))
-    avg_temp_change.plot()
-    plt.title("Average Worldwide Surface Temperature Change Over Years")
-    plt.xlabel("Year")
-    plt.ylabel("Average Temperature Change in Degree Celsius")
-    plt.grid(True)
-    plt.show()
-
-
-def plot_compare_countries_temperature_trend(
-    df: pd.DataFrame, country1: str, country2: str
-) -> None:
-    """
-    Compare the temperature change trends of two countries over the years.
-
-    :param df: pd.DataFrame
-        DataFrame containing the annual surface temperature change data.
-    :param country1: str
-        The name of the first country.
-    :param country2: str
-        The name of the second country.
-    """
-    country1_data = df[df["Country"] == country1]
-    country2_data = df[df["Country"] == country2]
-
-    if country1_data.empty:
-        print(f"Country '{country1}' is not found in the data.")
-        return
-    if country2_data.empty:
-        print(f"Country '{country2}' is not found in the data.")
-        return
-
-    # Extract year columns
-    year_columns = df.columns[2:]
-
-    # Plotting
-    plt.figure(figsize=(10, 6))
-    plt.plot(year_columns, country1_data[year_columns].values.flatten(), label=country1)
-    plt.plot(year_columns, country2_data[year_columns].values.flatten(), label=country2)
-    plt.title(
-        f"Comparison of Surface Temperature Change Trends\n{country1} vs {country2}"
-    )
-    plt.xlabel("Year")
-    plt.ylabel("Temperature Change in Degree Celsius")
-    plt.xticks(rotation=45)
-    plt.grid(True)
-    plt.legend()
-    plt.show()
-
-
 def plot_average_value_map(
     merged: gpd.GeoDataFrame, label_and_unit: str, column: str = "Average_Value"
 ) -> None:
@@ -96,11 +35,11 @@ def plot_average_value_map(
     plt.show()
 
 
-def plot_column_over_years(
-    df: pd.DataFrame, date_col: str, value_col: str, label: str
+def plot_column_over_time(
+    df: pd.DataFrame, date_col: str, value_col: str, label: str, frequency: str = 'M'
 ) -> None:
     """
-    Plot the specified column aggregated by year.
+    Plot the specified column aggregated by the specified frequency.
 
     :param df: pd.DataFrame
         DataFrame containing the data.
@@ -110,25 +49,26 @@ def plot_column_over_years(
         The name of the column containing the values to be plotted.
     :param label: str
         The label for the data to be used in the plot title and ylabel.
+    :param frequency: str, optional
+        The frequency for resampling the data (e.g., 'M' for monthly, 'Y' for yearly). Defaults to 'M'.
     """
 
-    # Convert date column to datetime
-    df[date_col] = pd.to_datetime(df[date_col])
+    df_copy = df.copy()
 
-    # Set date column as index
-    df.set_index(date_col, inplace=True)
+    df_copy[date_col] = pd.to_datetime(df_copy[date_col])
 
-    # Resample by year and calculate the mean
-    yearly_data = df[value_col].resample("Y").mean()
+    df_copy.set_index(date_col, inplace=True)
 
-    # Plotting
+    resampled_data = df_copy[value_col].resample(frequency).mean()
+    
     plt.figure(figsize=(10, 6))
-    yearly_data.plot()
-    plt.title(f"{label} Over Years")
-    plt.xlabel("Year")
+    resampled_data.plot()
+    plt.title(f"{label} Over Time")
+    plt.xlabel("Date")
     plt.ylabel(f"Average {label}")
     plt.grid(True)
     plt.show()
+
 
 
 def plot_average_change(avg_change: pd.Series, label: str) -> None:
@@ -146,4 +86,35 @@ def plot_average_change(avg_change: pd.Series, label: str) -> None:
     plt.xlabel("Year")
     plt.ylabel(f"Average {label} Change")
     plt.grid(True)
+    plt.show()
+
+
+def plot_scatter(x, y, x_label, y_label, title, alpha=0.5, figsize=(10, 6), grid=True):
+    """
+    Create a scatter plot with the given data and annotations.
+
+    :param x: array-like
+        Data for the x-axis.
+    :param y: array-like
+        Data for the y-axis.
+    :param x_label: str
+        Label for the x-axis.
+    :param y_label: str
+        Label for the y-axis.
+    :param title: str
+        Title of the plot.
+    :param alpha: float, optional (default=0.5)
+        Transparency level of the points.
+    :param figsize: tuple, optional (default=(10, 6))
+        Size of the figure.
+    :param grid: bool, optional (default=True)
+        Whether to display grid lines.
+    """
+    plt.figure(figsize=figsize)
+    plt.scatter(x, y, alpha=alpha)
+    plt.title(title)
+    plt.xlabel(x_label)
+    plt.ylabel(y_label)
+    if grid:
+        plt.grid(True)
     plt.show()
