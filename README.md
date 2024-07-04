@@ -1,52 +1,125 @@
-# Exercise Badges
+# Interlinked Dynamics: Exploring the Correlations between Surface Temperature, Atmospheric CO2, Sea Level Rise, and Land Cover Changes
 
+<div align="center">
+  <img src="project\final_report_latex\pictures\temp_world.png" width="1000" height="250" alt="Project Logo">
+</div>
+
+<div align="center">
+
+[![Python](https://img.shields.io/badge/python-3.11.9-blue.svg)](https://www.python.org/downloads/release/python-3119/)
+[![Jayvee](https://img.shields.io/badge/jayvee-0.4.0-blue.svg)](https://pypi.org/project/jayvee/0.4.0/)
+[![Continuous Integration Pipeline](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/project_test.yml/badge.svg)](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/project_test.yml)
+[![pre-commit](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/pre-commit.yaml/badge.svg)](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/pre-commit.yaml)
+
+[![Exercise Feedback](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/exercise-feedback.yml/badge.svg)](https://github.com/Hassan8725/advance_data_engineering/actions/workflows/exercise-feedback.yml)
 ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex1) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex2) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex3) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex4) ![](https://byob.yarr.is/Hassan8725/advance_data_engineering/score_ex5)
 
 
-# Methods of Advanced Data Engineering Template Project
+## Project Overview
+This project investigates the interrelations between climate change variables: surface temperature, atmospheric CO2 concentrations, sea level rise, and land cover changes. The main objectives are:
+1. How do changes in atmospheric CO2 concentrations correlate with changes in Sea Level Rise over time?
+2. Is there a correlation between rising mean surface temperatures and Land Cover Changes?
 
-This template project provides some structure for your open data project in the MADE module at FAU.
-This repository contains (a) a data science project that is developed by the student over the course of the semester, and (b) the exercises that are submitted over the course of the semester.
-Before you begin, make sure you have [Python](https://www.python.org/) and [Jayvee](https://github.com/jvalue/jayvee) installed. We will work with [Jupyter notebooks](https://jupyter.org/). The easiest way to do so is to set up [VSCode](https://code.visualstudio.com/) with the [Jupyter extension](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter).
+## Data Sources
+The project utilizes the following datasets:
+- **Annual Surface Temperature Change**: Mean surface temperature change for 1961-2021 for each country.
+- **World Monthly Atmospheric CO2 Concentrations**: Global CO2 concentrations observed monthly since 1958.
+- **Change in Mean Sea Levels**: Global sea level rise observed monthly since 1993.
+- **Land Cover Altering Indicator**: Changes in land cover from 1992 to 2020 for each country.
 
-To get started, please follow these steps:
-1. Create your own fork of this repository. Feel free to rename the repository right after creation, before you let the teaching instructors know your repository URL. **Do not rename the repository during the semester**.
-2. Setup the exercise feedback by changing the exercise badge sources in the `README.md` file following the patter `![](https://byob.yarr.is/<github-user-name>/<github-repo>/score_ex<exercise-number>)`.
-For example, if your user is _myuser_ and your repo is _myrepo_, then update the badge for _exercise 1_ to `![](https://byob.yarr.is/myrepo/myuser/score_ex1)`. Proceed with the remaining badges accordingly.
+## Data Pipeline
+The data pipeline consists of three main modules:
+1. **Extractor**: Extracts data from URLs.
+2. **Transform**: Performs necessary data transformations including deletion of useless columns and standardization of date formats.
+3. **Loader**: Loads transformed data into an SQLite database.
 
+The ETL process ensures data quality, consistency, and appropriate format alignment with research questions.
 
-## Project Work
-Your data engineering project will run alongside lectures during the semester. We will ask you to regularly submit project work as milestones so you can reasonably pace your work. All project work submissions **must** be placed in the `project` folder.
+## Analysis Summary
+- **Correlation between Atmospheric CO2 and Sea Level Rise**: A strong positive correlation was found, suggesting that higher CO2 levels contribute to sea level rise through thermal expansion and melting ice caps.
+- **Correlation between Surface Temperature and Land Cover Changes**: No significant correlation was observed, indicating other factors might influence land cover changes.
 
-### Exporting a Jupyter Notebook
-Jupyter Notebooks can be exported using `nbconvert` (`pip install nbconvert`). For example, to export the example notebook to html: `jupyter nbconvert --to html examples/final-report-example.ipynb --embed-images --output final-report.html`
+## Conclusion
+The study highlights the impact of atmospheric CO2 on sea level rise and the complex nature of land cover changes, underscoring the need for effective climate policies.
 
+## Repository Structure
+- `.github/workflows`: GitHub Actions workflows.
+- `data/`: Raw and processed data files.
+- `examples/`: Scripts and notebooks for running and trying out examples.
+- `exercises/`: Jayvee exercises.
+- `project/`: Main project folder containing modules, tests, and reports along with files for shell pipelines.
+	- `etl_pipeline/`: Modules for data extraction, transformation, and loading.
+	- `data_exploratory/`: Modules for all data analysis.
+	- `data_report_latex/`: LaTeX code for data report.
+	- `final_report_latex/`: LaTeX code for final analysis report.
+	- `tests/`: Modular pytest scripts.
+	- `data-report.pdf`: Data report PDF.
+	- `analysis-report.pdf`: Analysis report PDF.
+	- `pipeline.py`: Main script for running the data pipeline.
+	- `pipeline.sh`: Shell script for running the data pipeline.
+	- `test.sh`: Shell script for running tests.
+	- `project-plan.md`: Project plan document.
 
-## Exercises
-During the semester you will need to complete exercises using [Jayvee](https://github.com/jvalue/jayvee). You **must** place your submission in the `exercises` folder in your repository and name them according to their number from one to five: `exercise<number from 1-5>.jv`.
+- `.gitignore`: Specifies files and directories to be ignored by git.
+- `requirements.txt`: Lists the dependencies required for the project.
+- `README.md`: Project overview and instructions.
 
-In regular intervalls, exercises will be given as homework to complete during the semester. Details and deadlines will be discussed in the lecture, also see the [course schedule](https://made.uni1.de/). At the end of the semester, you will therefore have the following files in your repository:
+## License
 
-1. `./exercises/exercise1.jv`
-2. `./exercises/exercise2.jv`
-3. `./exercises/exercise3.jv`
-4. `./exercises/exercise4.jv`
-5. `./exercises/exercise5.jv`
+The content of this project is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. For more information, visit [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/).
 
-### Exercise Feedback
-We provide automated exercise feedback using a GitHub action (that is defined in `.github/workflows/exercise-feedback.yml`).
+For further information and detailed data source licenses, visit [IMF Climate Data](https://climatedata.imf.org/).
 
-To view your exercise feedback, navigate to Actions -> Exercise Feedback in your repository.
+## Getting Started
 
-The exercise feedback is executed whenever you make a change in files in the `exercise` folder and push your local changes to the repository on GitHub. To see the feedback, open the latest GitHub Action run, open the `exercise-feedback` job and `Exercise Feedback` step. You should see command line output that contains output like this:
+To get started with this project, follow these steps:
 
-```sh
-Found exercises/exercise1.jv, executing model...
-Found output file airports.sqlite, grading...
-Grading Exercise 1
-	Overall points 17 of 17
-	---
-	By category:
-		Shape: 4 of 4
-		Types: 13 of 13
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/Hassan8725/advance_data_engineering.git
+   ```
+2. Navigate to the project directory:
+
+   ```bash
+   cd AI-FAPS_Hassan_Ahmed
+   ```
+3. Create and activate a virtual environment:
+
+   ```bash
+    # For Windows:
+    python -m venv .venv
+    venv\Scripts\activate
+
+    # For macOS and Linux:
+    python3 -m venv .venv
+    source venv/bin/activate
+   ```
+4. Install project dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+5. Verify installation:
+
+   ```bash
+   pip list
+   ```
+6. Deactivate the virtual environment (optional):
+
+   ```bash
+   deactivate
+   ```
+
+## Version Control Steps:
+
+Before Pushing into your branch update **requirements.txt** file and then commit and push using following commands.
+
+```
+pip freeze > requirements.txt
+
+git add .
+git commit -m "commit message"
+git push origin branch_name
+
 ```
