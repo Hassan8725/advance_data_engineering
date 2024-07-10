@@ -26,6 +26,7 @@
 7. [License](#license)
 8. [Getting Started](#getting-started)
 9. [Version Control Steps](#version-control-steps)
+10. [Building Documentation](#building-the-documentation)
 
 
 ## Project Overview
@@ -147,3 +148,27 @@ git commit -m "commit message"
 git push origin branch_name
 
 ```
+
+## Building the Documentation
+
+To build the Sphinx documentation, follow these steps:
+
+1. Navigate to the `docs` directory:
+
+    ```sh
+    cd docs
+    ```
+
+2. Build the HTML documentation:
+
+    ```sh
+    sphinx-build -M html source build -v
+    ```
+
+3. Open the generated HTML files:
+
+    The HTML files will be located in the `build/html` directory. Open `index.html` in your web browser to view the documentation.
+
+    ```sh
+    open build/html/index.html  # On Windows, use `start build/html/index.html`
+    ```

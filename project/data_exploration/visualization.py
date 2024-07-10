@@ -52,7 +52,7 @@ def plot_column_over_time(
         The label for the data to be used in the plot title and ylabel.
     :param frequency: str, optional
         The frequency for resampling the data (e.g., 'M' for monthly, 'Y' for yearly).
-            Defaults to 'M'.
+        Defaults to 'M'.
     """
 
     df_copy = df.copy()
